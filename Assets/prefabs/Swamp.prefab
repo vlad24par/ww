@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5694659513279170550}
   - component: {fileID: 542954671875235304}
-  - component: {fileID: 1378662430874954570}
+  - component: {fileID: 4520162543138082589}
   m_Layer: 0
-  m_Name: wild
+  m_Name: Swamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.17254902, g: 0.5294118, b: 0.23137255, a: 1}
+  m_Color: {r: 0.36862746, g: 0.68235296, b: 0.5647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1378662430874954570
+--- !u!114 &4520162543138082589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34722a7c42e1f34ebbf0df676ff448e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 10
-  defence: 20
-  patency: 2
+  attack: -30
+  defence: 50
+  patency: 3
+  SellType: 4

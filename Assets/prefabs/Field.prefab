@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5694659513279170550}
   - component: {fileID: 542954671875235304}
-  - component: {fileID: 4900949574332527454}
+  - component: {fileID: 8232706749626851109}
   m_Layer: 0
-  m_Name: Square 3
+  m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.5921569, g: 0.59607846, b: 0.18431373, a: 1}
+  m_Color: {r: 0.627451, g: 1, b: 0.65882355, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4900949574332527454
+--- !u!114 &8232706749626851109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,5 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 20
-  defence: 10
-  patency: 2
+  defence: -10
+  patency: 1
+  SellType: 1
