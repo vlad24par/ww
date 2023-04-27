@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 70f88fce6d2f0a348a12e6ee3dc012c3
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - wild: {fileID: 4680169784973301217, guid: 495a252dafddeca4487e3aefdbda3ae0, type: 3}
+  - boloto: {fileID: 4680169784973301217, guid: 350f4dc01aa2f1147925454ebac03d89, type: 3}
+  - cholm: {fileID: 4680169784973301217, guid: a606c5f74dd4fcc4d974bef1f26c8b40, type: 3}
+  - choru: {fileID: 4680169784973301217, guid: 0c9830d02794ba84a9bef48946940619, type: 3}
+  - pole: {fileID: 4680169784973301217, guid: ef6851d397ff58b4588281bdb89c45f3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
