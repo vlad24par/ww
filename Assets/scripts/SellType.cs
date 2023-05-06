@@ -7,5 +7,6 @@ namespace DefaultNamespace
         Mountain, //гора
         Hill, //холм
         Swamp, //болото
+        non,
     }
 }
