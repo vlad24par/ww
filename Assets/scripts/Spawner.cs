@@ -8,23 +8,13 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] private int X;
     [SerializeField] private int Y;
-    [SerializeField] int Bioms_max;
-
-    private int Bioms_min;
-    private float float_Bioms;
-
+    [SerializeField] float Given_Index;
+    private float Bioms_indecks;
+    private float Bioms_indecks2;
+    private int Number_Of_Biomes = 10000;
 
     void Start()
     {
-
-
-        float_Bioms = Bioms_max / 10;
-        float_Bioms = Mathf.Floor(float_Bioms);
-        Bioms_min = Bioms_max - ((int)float_Bioms * 10);
-
-
-
-        Bioms_max = (Bioms_max - Bioms_min) / 10;
         BuildField();
     }
 
@@ -34,9 +24,31 @@ public class Spawner : MonoBehaviour
         {
             for (int j = 0; j < Y; j++)
             {
-                var random_biom_id = Random.Range(Bioms_min,Bioms_max);
-
-                var prefab = _sellsPrefabs[random_biom_id];
+                Bioms_indecks = Given_Index;
+                Bioms_indecks2 = Given_Index;
+                Number_Of_Biomes = Random.Range(1, 5);
+                if (Number_Of_Biomes == 1)
+                {
+                    Number_Of_Biomes = 10;
+                }
+                else if (Number_Of_Biomes == 2)
+                {
+                    Number_Of_Biomes = 100;
+                }
+                else if (Number_Of_Biomes == 3)
+                {
+                    Number_Of_Biomes = 1000;
+                }
+                else if (Number_Of_Biomes == 4)
+                {
+                    Number_Of_Biomes = 10000;
+                }
+                Bioms_indecks = Bioms_indecks / Number_Of_Biomes;
+                Bioms_indecks = Mathf.Floor(Bioms_indecks);
+                Bioms_indecks2 = Bioms_indecks2 / (Number_Of_Biomes / 10);
+                Bioms_indecks2 = Mathf.Floor(Bioms_indecks2);
+                Bioms_indecks = Bioms_indecks2 - Bioms_indecks * 10;
+                var prefab = _sellsPrefabs[(int)Bioms_indecks];
                 Instantiate(prefab, new Vector3(i, j, 0), Quaternion.identity,transform);
             }
         }

@@ -237,15 +237,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sellsPrefabs:
-  - {fileID: 0}
-  - {fileID: 3501866926067286089, guid: 0c9830d02794ba84a9bef48946940619, type: 3}
+  - {fileID: 4520162543138082589, guid: 350f4dc01aa2f1147925454ebac03d89, type: 3}
   - {fileID: 4900949574332527454, guid: a606c5f74dd4fcc4d974bef1f26c8b40, type: 3}
+  - {fileID: 3501866926067286089, guid: 0c9830d02794ba84a9bef48946940619, type: 3}
   - {fileID: 1378662430874954570, guid: 495a252dafddeca4487e3aefdbda3ae0, type: 3}
   - {fileID: 8232706749626851109, guid: ef6851d397ff58b4588281bdb89c45f3, type: 3}
   - {fileID: 4520162543138082589, guid: 350f4dc01aa2f1147925454ebac03d89, type: 3}
   X: 10
   Y: 5
-  Bioms_max: 15
+  Given_Index: 11134
 --- !u!4 &719898769
 Transform:
   m_ObjectHideFlags: 0
