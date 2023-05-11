@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   X: 0
   Y: 0
+  HillPercent: 10
+  MountainPercent: 10
+  ForestPercent: 30
+  FieldPercent: 50
+  SwampPercent: 0

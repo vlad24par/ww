@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -199,14 +199,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.5, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &719898767
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,15 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sellsPrefabs:
-  - {fileID: 4520162543138082589, guid: 350f4dc01aa2f1147925454ebac03d89, type: 3}
   - {fileID: 4900949574332527454, guid: a606c5f74dd4fcc4d974bef1f26c8b40, type: 3}
   - {fileID: 3501866926067286089, guid: 0c9830d02794ba84a9bef48946940619, type: 3}
   - {fileID: 1378662430874954570, guid: 495a252dafddeca4487e3aefdbda3ae0, type: 3}
   - {fileID: 8232706749626851109, guid: ef6851d397ff58b4588281bdb89c45f3, type: 3}
   - {fileID: 4520162543138082589, guid: 350f4dc01aa2f1147925454ebac03d89, type: 3}
+  _fieldSettingsList:
+  - {fileID: 11400000, guid: 960ace527003d413a983c2599836e7fb, type: 2}
   X: 10
   Y: 5
-  Given_Index: 11134
+  Given_Index: 43444
 --- !u!4 &719898769
 Transform:
   m_ObjectHideFlags: 0
