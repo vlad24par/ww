@@ -1,7 +1,11 @@
+using UnityEngine;
+
 namespace DefaultNamespace.Units
 {
-    public class UnitParams
+    [CreateAssetMenu(fileName = "UnitParams", menuName = "Settings/UnitParams")]
+    public class UnitParams : ScriptableObject
     {
+        public UnitType Type;
         public int Health = 100;
         public int Attack = 10;
         public int Deffence = 5;
