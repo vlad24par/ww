@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DefaultNamespace.Units;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,11 @@ namespace DefaultNamespace
         [SerializeField] private Button _addTankButton;
         [SerializeField] private Button _addArtilleryButton;
         [SerializeField] private Button _addInfanceButton;
+        [SerializeField] private Button _removeTankButton;
+        [SerializeField] private Button _removeArtilleryButton;
+        [SerializeField] private Button _removeInfanceButton;
+        
+        [SerializeField] private TMP_Text _healthText;
         
         private List<UnitType> _units = new List<UnitType>();
 
@@ -20,6 +26,10 @@ namespace DefaultNamespace
             _addTankButton.onClick.AddListener(() => AddUnit(UnitType.Tank));
             _addArtilleryButton.onClick.AddListener(() => AddUnit(UnitType.Artillery));
             _addInfanceButton.onClick.AddListener(() => AddUnit(UnitType.Infantry));
+            
+            _removeTankButton.onClick.AddListener(() => RemoveUnit(UnitType.Tank));
+            _removeArtilleryButton.onClick.AddListener(() => RemoveUnit(UnitType.Artillery));
+            _removeInfanceButton.onClick.AddListener(() => RemoveUnit(UnitType.Infantry));
         }
 
         private void OnDisable()
@@ -27,6 +37,10 @@ namespace DefaultNamespace
             _addTankButton.onClick.RemoveListener(() => AddUnit(UnitType.Tank));
             _addArtilleryButton.onClick.RemoveListener(() => AddUnit(UnitType.Artillery));
             _addInfanceButton.onClick.RemoveListener(() => AddUnit(UnitType.Infantry));
+            
+            _removeTankButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Tank));
+            _removeArtilleryButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Artillery));
+            _removeInfanceButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Infantry));
         }
 
         private void AddUnit(UnitType type)
@@ -34,8 +48,8 @@ namespace DefaultNamespace
             _units.Add(type);
             ShowDivisionHP();
         }
-        
-        public void RemoveUnit(UnitType type)
+
+        private void RemoveUnit(UnitType type)
         {
             if (_units.Contains(type))
                 _units.Remove(type);
@@ -51,8 +65,8 @@ namespace DefaultNamespace
                 hp += _unitsParams.Find(x => x.Type == unit).Health;
                 attack += _unitsParams.Find(x => x.Type == unit).Attack;
             }
-            
-            Debug.Log(hp);
+
+            _healthText.text = "Health: " + hp;
         }
     }
 }
