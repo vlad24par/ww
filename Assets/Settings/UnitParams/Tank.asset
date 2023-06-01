@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   Type: 0
-  Health: 100
-  Attack: 10
-  Deffence: 5
-  Speed: 1
-  Patency: 1
+  Health: 1000
+  Attack: 150
+  Deffence: 10
+  Speed: 5
+  Patency: 4
