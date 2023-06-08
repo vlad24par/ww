@@ -9,6 +9,7 @@ namespace DefaultNamespace
 {
     public class Division : MonoBehaviour
     {
+
         [SerializeField] private List<UnitParams> _unitsParams = new List<UnitParams>();
         [SerializeField] private Button _addTankButton;
         [SerializeField] private Button _addArtilleryButton;
@@ -17,8 +18,16 @@ namespace DefaultNamespace
         [SerializeField] private Button _removeArtilleryButton;
         [SerializeField] private Button _removeInfanceButton;
         
-        [SerializeField] private TMP_Text _healthText;
-        
+        [SerializeField] public TMP_Text _healthText;
+        [SerializeField] public TMP_Text _attakText;
+        [SerializeField] public TMP_Text _defenceText;
+        [SerializeField] public TMP_Text _potencText;
+        [SerializeField] public TMP_Text _speedText;
+
+        [SerializeField] private GameObject _divisionCreit;
+        [SerializeField] private Vector3 position;
+
+
         private List<UnitType> _units = new List<UnitType>();
 
         private void OnEnable()
@@ -56,17 +65,32 @@ namespace DefaultNamespace
             ShowDivisionHP();
         }
 
+        public void done ()
+        {
+            Instantiate(_divisionCreit, position, Quaternion.identity);
+        }
+
         private void ShowDivisionHP()
         {
             var hp = 0;
             var attack = 0;
+            var defence = 0;
+            var potence = 0;
+            var speed = 0;
             foreach (var unit in _units)
             {
                 hp += _unitsParams.Find(x => x.Type == unit).Health;
                 attack += _unitsParams.Find(x => x.Type == unit).Attack;
+                defence += _unitsParams.Find(x => x.Type == unit).Deffence;
+                potence += _unitsParams.Find(x => x.Type == unit).Attack;
+                speed += _unitsParams.Find(x => x.Type == unit).Speed;
             }
 
             _healthText.text = "Health: " + hp;
+            _attakText.text = "atttack: " + attack;
+            _defenceText.text = "defence: " + defence;
+            _potencText.text = "potence: " + potence;
+            _speedText.text = "potence: " + speed;
         }
     }
 }

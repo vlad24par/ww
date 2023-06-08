@@ -7,19 +7,22 @@ using UnityEngine;
 public abstract class Unit : MonoBehaviour
 {
     protected abstract UnitParams DefaultParams { get; }
-    protected int Health;
+    public int Health;
+    public int Attack;
+    public int Deffence;
+    public int Speed;
+    public int Patency;
 
     private void Start()
     {
         Health = DefaultParams.Health;
+        Health = DefaultParams.Attack;
+        Health = DefaultParams.Deffence;
+        Health = DefaultParams.Speed;
+        Health = DefaultParams.Patency;
     }
 
     public virtual void Move()
-    {
-        
-    }
-
-    public virtual void Attack()
     {
         
     }
