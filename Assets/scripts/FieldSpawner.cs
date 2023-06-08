@@ -1,16 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class FieldSpawner : MonoBehaviour
 {
     [SerializeField] private List<Sell> _sellsPrefabs;
     [SerializeField] private List<FieldSettings> _fieldSettingsList;
+    [SerializeField] private FieldController _fieldController;
 
     [SerializeField] private int X;
     [SerializeField] private int Y;
     [SerializeField] uint Given_Index;
-    
+
     private int Number_Of_Biomes = 10000;
 
     void Start()
@@ -80,14 +80,14 @@ public class Spawner : MonoBehaviour
                 var value = Random.Range(0, 101);
                 if (value <= settings.HillPercent)
                 {
-                    SpawnSell(_sellsPrefabs[0].gameObject, new Vector3(i, j, 0));
+                    SpawnSell(_sellsPrefabs[0], new Vector3(i, j, 0));
                     continue;
                 }
 
                 if (value <= settings.HillPercent + 
                     settings.MountainPercent)
                 {
-                    SpawnSell(_sellsPrefabs[1].gameObject, new Vector3(i, j, 0));
+                    SpawnSell(_sellsPrefabs[1], new Vector3(i, j, 0));
                     continue;
                 }
 
@@ -95,7 +95,7 @@ public class Spawner : MonoBehaviour
                     settings.MountainPercent + 
                     settings.ForestPercent)
                 {
-                    SpawnSell(_sellsPrefabs[2].gameObject, new Vector3(i, j, 0));
+                    SpawnSell(_sellsPrefabs[2], new Vector3(i, j, 0));
                     continue;
                 }
 
@@ -104,17 +104,20 @@ public class Spawner : MonoBehaviour
                     settings.ForestPercent + 
                     settings.FieldPercent)
                 {
-                    SpawnSell(_sellsPrefabs[3].gameObject, new Vector3(i, j, 0));
+                    SpawnSell(_sellsPrefabs[3], new Vector3(i, j, 0));
                     continue;
                 }
                 
-                SpawnSell(_sellsPrefabs[4].gameObject, new Vector3(i, j, 0));
+                SpawnSell(_sellsPrefabs[4], new Vector3(i, j, 0));
             }
         }
+        
+        _fieldController.StartGame();
     }
 
-    private void SpawnSell(GameObject prefab, Vector3 position)
+    private void SpawnSell(Sell prefab, Vector3 position)
     {
-        Instantiate(prefab, position, Quaternion.identity,transform);
+        var sell = Instantiate(prefab, position, Quaternion.identity,transform);
+        _fieldController.AddSell(sell);
     }
 }

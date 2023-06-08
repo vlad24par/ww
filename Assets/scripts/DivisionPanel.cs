@@ -1,81 +1,86 @@
 using System.Collections.Generic;
+using DefaultNamespace.Units;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DivisionPanel : MonoBehaviour
+namespace DefaultNamespace
 {
-    [SerializeField] private Button _closeButton;
-    [SerializeField] private GameObject _panel;
-    [SerializeField] private Button _nextButton;
-    [SerializeField] private Button _previousButton;
-    [SerializeField] private Button _doneButton;
-    [SerializeField] private TMP_Text _divisionText;
-    [SerializeField] private List<GameObject> _divisionPanels;
-
-    private int _page = 0;
-
-    private void OnEnable()
+    public class DivisionPanel : MonoBehaviour
     {
-        _closeButton.onClick.AddListener(OnButtonClick);
-        _doneButton.onClick.AddListener(OnButtonClick);
+
+        [SerializeField] private List<UnitParams> _unitsParams = new List<UnitParams>();
+        [SerializeField] private Button _addTankButton;
+        [SerializeField] private Button _addArtilleryButton;
+        [SerializeField] private Button _addInfanceButton;
+        [SerializeField] private Button _removeTankButton;
+        [SerializeField] private Button _removeArtilleryButton;
+        [SerializeField] private Button _removeInfanceButton;
         
-        _nextButton.onClick.AddListener(NextButtonClick);
-        _previousButton.onClick.AddListener(PreviousButtonClick);
-        SelectPage(0);
-    }
+        [SerializeField] public TMP_Text _healthText;
+        [SerializeField] public TMP_Text _attakText;
+        [SerializeField] public TMP_Text _defenceText;
+        [SerializeField] public TMP_Text _potencText;
+        [SerializeField] public TMP_Text _speedText;
+        
+        public List<UnitType> Units = new List<UnitType>();
 
-    private void OnDisable()
-    {
-        _closeButton.onClick.RemoveListener(OnButtonClick);
-        _doneButton.onClick.RemoveListener(OnButtonClick);
-
-        _nextButton.onClick.RemoveListener(NextButtonClick);
-        _previousButton.onClick.RemoveListener(PreviousButtonClick);
-    }
-
-    private void OnButtonClick()
-    {
-        _panel.SetActive(!_panel.activeSelf);
-    }
-
-    private void NextButtonClick()
-    {
-        SelectPage(_page + 1);
-    }
-
-    private void PreviousButtonClick()
-    {
-        SelectPage(_page - 1);
-    }
-
-    private void SelectPage(int page)
-    {
-        if (page < 0)
-            page = _divisionPanels.Count - 1;
-        if (page >= _divisionPanels.Count)
-            page = 0;
-
-        _page = page;
-
-        for (int i = 0; i < _divisionPanels.Count; i++)
+        private void OnEnable()
         {
+            _addTankButton.onClick.AddListener(() => AddUnit(UnitType.Tank));
+            _addArtilleryButton.onClick.AddListener(() => AddUnit(UnitType.Artillery));
+            _addInfanceButton.onClick.AddListener(() => AddUnit(UnitType.Infantry));
             
-            if(i == _page)
-                _divisionPanels[i].SetActive(true);
-            else
-            {
-                _divisionPanels[i].SetActive(false);
-            }
-            //одно и то же
-            _divisionPanels[i].SetActive(i == page);
+            _removeTankButton.onClick.AddListener(() => RemoveUnit(UnitType.Tank));
+            _removeArtilleryButton.onClick.AddListener(() => RemoveUnit(UnitType.Artillery));
+            _removeInfanceButton.onClick.AddListener(() => RemoveUnit(UnitType.Infantry));
         }
 
-        //if _page == 0
-        _divisionText.text = $"Division {_page + 1}";//Division 1
-        // _divisionText.text = "Division {_page + 1}";//Division {_page + 1}
-        // _divisionText.text = "Division " + _page + 1;//Division 01
-        // _divisionText.text = "Division " + (_page + 1);//Division 1
-        
+        private void OnDisable()
+        {
+            _addTankButton.onClick.RemoveListener(() => AddUnit(UnitType.Tank));
+            _addArtilleryButton.onClick.RemoveListener(() => AddUnit(UnitType.Artillery));
+            _addInfanceButton.onClick.RemoveListener(() => AddUnit(UnitType.Infantry));
+            
+            _removeTankButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Tank));
+            _removeArtilleryButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Artillery));
+            _removeInfanceButton.onClick.RemoveListener(() => RemoveUnit(UnitType.Infantry));
+        }
+
+        private void AddUnit(UnitType type)
+        {
+            Units.Add(type);
+            ShowDivisionHP();
+        }
+
+        private void RemoveUnit(UnitType type)
+        {
+            if (Units.Contains(type))
+                Units.Remove(type);
+            ShowDivisionHP();
+        }
+
+        private void ShowDivisionHP()
+        {
+            var hp = 0;
+            var attack = 0;
+            var defence = 0;
+            var potence = 0;
+            var speed = 0;
+            foreach (var unit in Units)
+            {
+                hp += _unitsParams.Find(x => x.Type == unit).Health;
+                attack += _unitsParams.Find(x => x.Type == unit).Attack;
+                defence += _unitsParams.Find(x => x.Type == unit).Deffence;
+                potence += _unitsParams.Find(x => x.Type == unit).Attack;
+                speed += _unitsParams.Find(x => x.Type == unit).Speed;
+            }
+
+            _healthText.text = "Health: " + hp;
+            _attakText.text = "atttack: " + attack;
+            _defenceText.text = "defence: " + defence;
+            _potencText.text = "potence: " + potence;
+            _speedText.text = "potence: " + speed;
+        }
     }
 }
