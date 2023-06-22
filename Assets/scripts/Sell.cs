@@ -13,5 +13,8 @@ public class Sell : MonoBehaviour
     public SellType SellType;
     public event Action OnClick;
 
-    
+    public void Select()
+    {
+        Debug.LogError("Hi!");
+    }
 }
