@@ -22,6 +22,13 @@ namespace DefaultNamespace
         [SerializeField] public TMP_Text _defenceText;
         [SerializeField] public TMP_Text _potencText;
         [SerializeField] public TMP_Text _speedText;
+
+        [SerializeField] public int _Artillery;
+        [SerializeField] public TMP_Text _textArtillery;
+        [SerializeField] public int _Infance;
+        [SerializeField] public TMP_Text _textInfance;
+        [SerializeField] public int _Tank;
+        [SerializeField] public TMP_Text _textTank;
         
         public List<UnitType> Units = new List<UnitType>();
 
@@ -49,19 +56,62 @@ namespace DefaultNamespace
 
         private void AddUnit(UnitType type)
         {
-            Units.Add(type);
-            ShowDivisionHP();
+            if (Units.Contains(UnitType.Tank))
+            {
+                Units.Add(type);
+                _Tank = _Tank + 1;
+                ShowDivisionHP(_textTank, _Tank);
+            }
+            if (Units.Contains(UnitType.Artillery))
+            {
+                Units.Add(type);
+                _Artillery = _Artillery + 1;
+                ShowDivisionHP(_textArtillery, _Artillery);
+            }
+            if (Units.Contains(UnitType.Infantry))
+            {
+                Units.Add(type);
+                _Infance = _Infance + 1;
+                ShowDivisionHP(_textArtillery, _Infance);
+            }
         }
 
         private void RemoveUnit(UnitType type)
         {
-            if (Units.Contains(type))
+            if (Units.Contains(UnitType.Tank))
+            {
                 Units.Remove(type);
-            ShowDivisionHP();
+                _Tank = _Tank - 1;
+                ShowDivisionHP(_textTank, _Tank);
+            }
+            if (Units.Contains(UnitType.Artillery))
+            {
+                Units.Remove(type);
+                _Artillery = _Artillery - 1;
+                ShowDivisionHP(_textArtillery, _Artillery);
+            }
+            if (Units.Contains(UnitType.Infantry))
+            {
+                Units.Remove(type);
+                _Infance = _Infance - 1;
+                ShowDivisionHP(_textInfance, _Infance);
+            }
         }
 
-        private void ShowDivisionHP()
+        private void ShowDivisionHP(TMP_Text name,int kol)
         {
+            if (name == _textTank)
+            {
+                _textTank.text = _Tank.ToString();
+            }
+            if (name == _textArtillery)
+            {
+                _textArtillery.text = _Artillery.ToString();
+            }
+            if (name == _textInfance)
+            {
+                _textInfance.text = _Infance.ToString();
+            }
             var hp = 0;
             var attack = 0;
             var defence = 0;

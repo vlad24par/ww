@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class DivisionConstructor : MonoBehaviour
 {
-    [SerializeField] private Button _closeButton;
     [SerializeField] private GameObject _panel;
     [SerializeField] private Button _nextButton;
     [SerializeField] private Button _previousButton;
@@ -21,7 +20,6 @@ public class DivisionConstructor : MonoBehaviour
 
     private void OnEnable()
     {
-        _closeButton.onClick.AddListener(OnButtonClick);
         _doneButton.onClick.AddListener(Done);
         
         _nextButton.onClick.AddListener(NextButtonClick);
@@ -31,7 +29,6 @@ public class DivisionConstructor : MonoBehaviour
 
     private void OnDisable()
     {
-        _closeButton.onClick.RemoveListener(OnButtonClick);
         _doneButton.onClick.RemoveListener(Done);
 
         _nextButton.onClick.RemoveListener(NextButtonClick);
